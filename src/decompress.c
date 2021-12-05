@@ -3,6 +3,7 @@
 #include "data.h"
 #include "decompress.h"
 #include "pokemon.h"
+#include "palette.h"
 #include "text.h"
 
 EWRAM_DATA ALIGNED(4) u8 gDecompressionBuffer[0x4000] = {0};
@@ -46,6 +47,20 @@ void LoadCompressedSpritePalette(const struct CompressedSpritePalette *src)
     struct SpritePalette dest;
 
     LZ77UnCompWram(src->data, gDecompressionBuffer);
+
+    dest.data = (void*) gDecompressionBuffer;
+    dest.tag = src->tag;
+    LoadSpritePalette(&dest);
+}
+
+void LoadHueShiftedMonSpritePalette(const struct CompressedSpritePalette *src, u32 personality)
+{
+    struct SpritePalette dest;
+
+    LZ77UnCompWram(src->data, gDecompressionBuffer);
+
+    HueShiftMonPalette((u16*) gDecompressionBuffer, personality);
+
     dest.data = (void*) gDecompressionBuffer;
     dest.tag = src->tag;
     LoadSpritePalette(&dest);

@@ -737,7 +737,7 @@ static bool8 LoadMonAndSceneGfx(struct Pokemon *mon)
         trainerId = GetMonData(mon, MON_DATA_OT_ID);
         palette = GetMonSpritePalStructFromOtIdPersonality(species, trainerId, personality);
 
-        LoadCompressedSpritePalette(palette);
+        LoadHueShiftedMonSpritePalette(palette, personality);
         SetMultiuseSpriteTemplateToPokemon(palette->tag, B_POSITION_OPPONENT_LEFT);
         sPokeblockFeed->loadGfxState++;
         break;

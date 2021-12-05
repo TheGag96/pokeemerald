@@ -53,6 +53,8 @@ extern u16 gPlttBufferUnfaded[PLTT_BUFFER_SIZE];
 extern u16 gPlttBufferFaded[PLTT_BUFFER_SIZE];
 
 void LoadCompressedPalette(const u32 *, u16, u16);
+void HueShiftMonPalette(u16*, u32);
+void LoadHueShiftedMonPalette(const u32 *, u16, u16, u32);
 void LoadPalette(const void *, u16, u16);
 void FillPalette(u16, u16, u16);
 void TransferPlttBuffer(void);
