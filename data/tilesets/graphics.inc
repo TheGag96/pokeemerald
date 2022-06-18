@@ -1729,3 +1729,6 @@ gTilesetPalettes_UnionRoom::
 	.align 2
 gTilesetTiles_UnionRoom::
 	.incbin "data/tilesets/secondary/union_room/tiles.4bpp.lz"
+	.align 2
+gTilesetPalOverride_General05::
+	.incbin "data/tilesets/primary/general/palettes/05_over.gbapal"

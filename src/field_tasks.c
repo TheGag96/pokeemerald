@@ -141,6 +141,7 @@ static void Task_RunPerStepCallback(u8 taskId)
 #define tState           data[0]
 #define tAmbientCryState data[1]
 #define tAmbientCryDelay data[2]
+#define tForceTimeUpdate data[3]
 
 #define TIME_UPDATE_INTERVAL (1 << 12)
 
@@ -171,9 +172,24 @@ static void Task_RunTimeBasedEvents(u8 taskId)
         RunTimeBasedEvents(data);
         UpdateAmbientCry(&tAmbientCryState, &tAmbientCryDelay);
     }
+
+    if (tForceTimeUpdate)
+    {
+        tForceTimeUpdate = 0;
+        DoTimeBasedEvents();
+    }
+}
+
+void ForceTimeBasedEvents(void)
+{
+    u8 taskId = FindTaskIdByFunc(Task_RunTimeBasedEvents);
+
+    if (taskId != 0xFF)
+        gTasks[taskId].tForceTimeUpdate = 1;
 }
 
 #undef tState
+#undef tForceTimeUpdate
 
 void SetUpFieldTasks(void)
 {

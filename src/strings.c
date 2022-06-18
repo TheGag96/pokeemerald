@@ -1819,3 +1819,11 @@ const u8 gText_Answer[] = _("ANSWER");
 const u8 gText_PokeBalls[] = _("POKé BALLS");
 const u8 gText_Berry[] = _("BERRY");
 const u8 gText_Berries[] = _("BERRIES");
+
+const u8 gText_Sunday[] = _("Sunday");
+const u8 gText_Monday[] = _("Monday");
+const u8 gText_Tuesday[] = _("Tuesday");
+const u8 gText_Wednesday[] = _("Wednesday");
+const u8 gText_Thursday[] = _("Thursday");
+const u8 gText_Friday[] = _("Friday");
+const u8 gText_Saturday[] = _("Saturday");
